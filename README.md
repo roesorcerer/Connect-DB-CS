@@ -1,54 +1,57 @@
-# SQL Server Sample Code ReadMe
+# Module4B Readme
 
-## Overview
+## Introduction
 
-This repository contains a simple C# program that demonstrates how to connect to a SQL Server database and perform a read operation using the SQL Server .NET Data Provider. The code establishes a connection to a SQL Server database hosted on Microsoft Azure and retrieves data from a specific table.
+This readme file provides an overview of the code contained in the Module4B project. The code is a C# console application that connects to a SQL Server database and performs a read operation on a table called `[SalesLT].[Customer]`.
 
 ## Prerequisites
 
-Before running the code in this repository, ensure that you have the following prerequisites in place:
+Before running this code, you need to ensure that you have the following prerequisites in place:
 
-1. **Visual Studio or Visual Studio Code:** You will need an integrated development environment (IDE) to compile and run the C# code. You can download Visual Studio from the [official website](https://visualstudio.microsoft.com/).
+1. **SQL Server Connection Details**: You need to update the following connection details in the code to match your SQL Server configuration:
+   - `builder.DataSource`: The server name or IP address of your SQL Server.
+   - `builder.UserID`: Your SQL Server login username.
+   - `builder.Password`: Your SQL Server login password.
+   - `builder.InitialCatalog`: The initial database/catalog you want to connect to.
 
-2. **Microsoft Azure SQL Database:** You should have access to a SQL Server database hosted on Microsoft Azure or any other SQL Server instance that you want to connect to.
+## Code Overview
 
-3. **Azure SQL Database Credentials:** You should have the necessary credentials to connect to the database, including the server name, username, and password.
+### Main Method
 
-## Getting Started
+The `Main` method is the entry point of the program. Here's an overview of what the code does:
 
-Follow these steps to get started with the code:
+1. It establishes a connection to the SQL Server using the provided connection details.
 
-1. Clone or download this repository to your local machine.
+2. It performs a read operation on the `[SalesLT].[Customer]` table using a SELECT statement.
 
-2. Open the project in your preferred IDE (Visual Studio or Visual Studio Code).
+3. It retrieves and prints data from the SQL query to the console.
 
-3. Open the `Program.cs` file in the project.
+4. It handles any potential SQL exceptions that may occur during the execution.
 
-4. Locate the `builder` object and update the following properties with your Azure SQL Database information:
+### SQL Queries
 
-   - `builder.DataSource`: Set this to the server name or IP address of your SQL Server.
-   - `builder.UserID`: Set this to your SQL Server username.
-   - `builder.Password`: Set this to your SQL Server password.
-   - `builder.InitialCatalog`: Set this to the name of your database.
+The code contains two SQL query strings:
+- `sql`: This query is set to "USE [SalesLT].[Customer];" but is later overwritten with a SELECT statement.
+- `sql2`: This query is also set to "USE [SalesLT].[Customer];" but is later overwritten with a different SELECT statement.
 
-5. Save your changes.
+The code executes `sql2`, which selects the top 5 records from the `[SalesLT].[Customer]` table and prints their first and last names to the console.
 
-6. Build and run the program. You can do this by pressing F5 (Visual Studio) or using the appropriate command in Visual Studio Code.
+## Running the Code
 
-7. The program will connect to the SQL Server, execute a SELECT statement against the "Customer" table in the "SalesLT" schema, and print "Hello World!" to the console.
+To run the code, follow these steps:
 
-## Customizing the Query
+1. Make sure you have updated the SQL Server connection details in the code as mentioned in the "Prerequisites" section.
 
-If you want to retrieve different data from the database, you can customize the SQL query in the code. Modify the `sql` variable to contain your desired SQL SELECT statement.
+2. Build and run the application.
 
-## Troubleshooting
+3. The program will connect to the SQL Server, execute the SQL query, and display the results in the console.
 
-If you encounter any issues while running the code or connecting to the database, you can refer to the error messages displayed in the console for troubleshooting. Common issues may include incorrect connection strings, firewall rules, or database access permissions.
+4. After completion, you will be prompted to press any key to finish.
+
+## Error Handling
+
+The code includes error handling for SQL exceptions. Any SQL exceptions that occur during execution will be caught, and the error details will be displayed in the console.
 
 ## Conclusion
 
-This repository provides a simple example of connecting to a SQL Server database using C# and the SQL Server .NET Data Provider. You can use this code as a starting point for more complex database interactions in your own projects.
-
-If you have any questions or encounter any difficulties, please feel free to reach out for assistance.
-
-Thank you for using this SQL Server sample code!
+This code demonstrates how to connect to a SQL Server database and perform a read operation on a specific table. It is a simple example and can serve as a starting point for more complex database operations in C# applications.
